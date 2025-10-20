@@ -6,7 +6,7 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Get('/me')
-  me(@Req() request: any) {
+  me(@Req() request: { userId: string }) {
     return this.usersService.getUserById(request.userId);
   }
 }
