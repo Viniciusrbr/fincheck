@@ -3,7 +3,7 @@ import { CategoriesRepository } from 'src/shared/database/repositores/categories
 
 @Injectable()
 export class CategoriesService {
-  constructor(private readonly categoriesRepo: CategoriesRepository) { }
+  constructor(private readonly categoriesRepo: CategoriesRepository) {}
 
   findAllByUserId(userId: string) {
     return this.categoriesRepo.findMany({

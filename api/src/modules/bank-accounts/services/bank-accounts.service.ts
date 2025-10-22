@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBankAccountDto } from '../dto/create-bank-account.dto';
-import { BankAccountsRepository } from 'src/shared/database/repositores/bank-accounts';
+import { BankAccountsRepository } from 'src/shared/database/repositores/bank-accounts.repositories';
 import { ValidateBankAccountOwnershipService } from './validate-bank-account-ownership.service';
 
 @Injectable()
@@ -8,7 +8,7 @@ export class BankAccountsService {
   constructor(
     private readonly bankAccountsRepo: BankAccountsRepository,
     private readonly validateBankAccountOwnershipService: ValidateBankAccountOwnershipService,
-  ) {}
+  ) { }
 
   create(userId: string, createBankAccountDto: CreateBankAccountDto) {
     const { color, initialBalance, name, type } = createBankAccountDto;
