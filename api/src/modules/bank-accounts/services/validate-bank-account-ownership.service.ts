@@ -3,7 +3,7 @@ import { BankAccountsRepository } from 'src/shared/database/repositores/bank-acc
 
 @Injectable()
 export class ValidateBankAccountOwnershipService {
-  constructor(private readonly bankAccountsRepo: BankAccountsRepository) { }
+  constructor(private readonly bankAccountsRepo: BankAccountsRepository) {}
 
   async validate(userId: string, bankAccountId: string) {
     const isOwner = await this.bankAccountsRepo.findFirst({
