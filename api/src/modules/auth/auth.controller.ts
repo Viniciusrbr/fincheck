@@ -1,8 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { SignupDto } from './dto/signup';
 import { SigninDto } from './dto/signin';
-import { IsPublic } from 'src/shared/decorators/isPublic';
+import { SignupDto } from './dto/signup';
+import { IsPublic } from 'src/shared/decorators/IsPublic';
 
 @Controller('auth')
 @IsPublic()
