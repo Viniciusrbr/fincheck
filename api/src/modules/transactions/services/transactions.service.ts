@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import { ValidateBankAccountOwnershipService } from 'src/modules/bank-accounts/services/validate-bank-account-ownership.service';
+import { TransactionsRepository } from 'src/shared/database/repositories/transactions.repository';
 import { CreateTransactionDto } from '../dto/create-transaction.dto';
 import { UpdateTransactionDto } from '../dto/update-transaction.dto';
-import { TransactionsRepository } from 'src/shared/database/repositores/transactions.repository';
-import { ValidateBankAccountOwnershipService } from '../../bank-accounts/services/validate-bank-account-ownership.service';
-import { ValidateCategoryOwnershipService } from '../../categories/services/validate-category-ownership.service';
+import { TransactionType } from '../entities/Transaction';
 import { ValidateTransactionOwnershipService } from './validate-transaction-ownership.service';
+import { ValidateCategoryOwnershipService } from 'src/modules/categories/services/validate-category-ownership.service';
 
 @Injectable()
 export class TransactionsService {
@@ -38,8 +39,35 @@ export class TransactionsService {
     });
   }
 
-  findAllByUserId(userId: string) {
-    return this.transactionsRepo.findMany({ where: { userId } });
+  findAllByUserId(
+    userId: string,
+    filters: {
+      month: number;
+      year: number;
+      bankAccountId?: string;
+      type?: TransactionType;
+    },
+  ) {
+    return this.transactionsRepo.findMany({
+      where: {
+        userId,
+        bankAccountId: filters.bankAccountId,
+        type: filters.type,
+        date: {
+          gte: new Date(Date.UTC(filters.year, filters.month)),
+          lt: new Date(Date.UTC(filters.year, filters.month + 1)),
+        },
+      },
+      include: {
+        category: {
+          select: {
+            id: true,
+            name: true,
+            icon: true,
+          },
+        },
+      },
+    });
   }
 
   async update(
@@ -73,7 +101,9 @@ export class TransactionsService {
   async remove(userId: string, transactionId: string) {
     await this.validateEntitiesOwnership({ userId, transactionId });
 
-    await this.transactionsRepo.delete({ where: { id: transactionId } });
+    await this.transactionsRepo.delete({
+      where: { id: transactionId },
+    });
 
     return null;
   }

@@ -1,9 +1,9 @@
-import { Global, Module } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
-import { UsersRepository } from './repositores/users.repositories';
-import { CategoriesRepository } from './repositores/categories.repositories';
-import { BankAccountsRepository } from './repositores/bank-accounts.repositories';
-import { TransactionsRepository } from './repositores/transactions.repository';
+import { Global, Module } from '@nestjs/common';
+import { CategoriesRepository } from './repositories/categories.repositories';
+import { BankAccountsRepository } from './repositories/bank-accounts.repositories';
+import { TransactionsRepository } from './repositories/transactions.repository';
+import { UsersRepository } from './repositories/users.repositories';
 
 @Global()
 @Module({

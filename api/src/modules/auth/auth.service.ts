@@ -3,7 +3,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UsersRepository } from 'src/shared/database/repositores/users.repositories';
+import { UsersRepository } from 'src/shared/database/repositories/users.repositories';
 import { compare, hash } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { SignupDto } from './dto/signup';
@@ -24,13 +24,13 @@ export class AuthService {
     });
 
     if (!user) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new UnauthorizedException('Invalid crendetials.');
     }
 
     const isPasswordValid = await compare(password, user.password);
 
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new UnauthorizedException('Invalid crendetials.');
     }
 
     const accessToken = await this.generateAccessToken(user.id);
@@ -47,10 +47,10 @@ export class AuthService {
     });
 
     if (emailTaken) {
-      throw new ConflictException('This email is already in use.');
+      throw new ConflictException('This email is alreadyy in use');
     }
 
-    const hashedPassword = await hash(password, 10);
+    const hashedPassword = await hash(password, 12);
 
     const user = await this.usersRepo.create({
       data: {
