@@ -2,28 +2,28 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import z from 'zod'
+import { z } from 'zod'
 
 import { useAuth } from '../../../app/hooks/useAuth'
 import { authService } from '../../../app/services/authService'
-import type { SigninParams } from '../../../app/services/authService/signin'
+import { type SigninParams } from '../../../app/services/authService/signin'
 
 const schema = z.object({
-  email: z.email('O email é obrigatório').nonempty('O email é obrigatório'),
-  password: z
+  email: z
     .string()
-    .nonempty('A senha é obrigatória')
-    .min(8, 'A senha deve ter pelo menos 8 caracteres'),
+    .min(1, 'E-mail é obrigatorio')
+    .email('Informe um e-mail válido'),
+  password: z.string().min(8, 'A senha deve conter pelo menos 8 dígitos'),
 })
 
-type formData = z.infer<typeof schema>
+type FormData = z.infer<typeof schema>
 
 export function useLoginController() {
   const {
-    handleSubmit: hookFormSubmit,
     register,
+    handleSubmit: hookFormSubmit,
     formState: { errors },
-  } = useForm<formData>({
+  } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
 
@@ -44,5 +44,6 @@ export function useLoginController() {
       toast.error('Credenciais inválidas!')
     }
   })
-  return { handleSubmit, register, isPending, errors }
+
+  return { handleSubmit, register, errors, isPending }
 }
