@@ -97,7 +97,7 @@ export function Transactions() {
 
             {!hasTransactions && !isLoading && (
               <div className="flex flex-col items-center justify-center h-full">
-                <img src={emptyStateImage} alt="Empty State" />
+                <img src={emptyStateImage} alt="" />
                 <p className="text-gray-700">
                   Não encontramos nenhuma transação!
                 </p>

@@ -1,11 +1,19 @@
 import { Link } from 'react-router'
 
+import { usePageMeta } from '../../../app/hooks/usePageMeta'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { useLoginController } from './useLoginController'
 
 export function Login() {
   const { handleSubmit, register, errors, isPending } = useLoginController()
+
+  usePageMeta({
+    title: 'Entrar no Fincheck | Controle financeiro pessoal',
+    description:
+      'Acesse sua conta Fincheck e acompanhe contas bancárias, receitas e despesas em um só lugar. Controle financeiro pessoal simples e gratuito.',
+    path: '/login',
+  })
 
   return (
     <>

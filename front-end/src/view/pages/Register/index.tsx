@@ -1,11 +1,19 @@
 import { Link } from 'react-router'
 
+import { usePageMeta } from '../../../app/hooks/usePageMeta'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
 import { useRegisterController } from './useRegisterController'
 
 export function Register() {
   const { errors, handleSubmit, register, isPending } = useRegisterController()
+
+  usePageMeta({
+    title: 'Crie sua conta grátis | Fincheck',
+    description:
+      'Crie sua conta gratuita no Fincheck e organize suas finanças pessoais: cadastre contas, registre receitas e despesas e veja seu saldo por mês.',
+    path: '/register',
+  })
 
   return (
     <>

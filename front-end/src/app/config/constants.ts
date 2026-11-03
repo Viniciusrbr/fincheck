@@ -12,3 +12,5 @@ export const MONTHS = [
   'Nov',
   'Dez',
 ]
+
+export const SITE_URL = 'https://fincheck.viniciusrbr.dev'

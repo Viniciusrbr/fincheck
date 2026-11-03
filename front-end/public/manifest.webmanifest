@@ -1,0 +1,14 @@
+{
+  "name": "Fincheck",
+  "short_name": "Fincheck",
+  "description": "Controle financeiro pessoal simples e gratuito.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8F9FA",
+  "theme_color": "#087F5B",
+  "icons": [
+    { "src": "/logo.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
+  ]
+}

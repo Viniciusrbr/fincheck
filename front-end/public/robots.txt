@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fincheck.viniciusrbr.dev/sitemap.xml

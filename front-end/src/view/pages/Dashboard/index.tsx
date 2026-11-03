@@ -1,3 +1,4 @@
+import { usePageMeta } from '../../../app/hooks/usePageMeta'
 import { Logo } from '../../components/Logo'
 import { UserMenu } from '../../components/UserMenu'
 import { Accounts } from './components/Accounts'
@@ -12,6 +13,8 @@ import { NewAccountModal } from './modals/NewAccountModal'
 import { NewTransactionModal } from './modals/NewTransactionModal'
 
 export function Dashboard() {
+  usePageMeta({ title: 'Dashboard | Fincheck', noIndex: true })
+
   return (
     <DashboardProvider>
       <DashboardContext.Consumer>

@@ -9,7 +9,10 @@ export function Logo({ className }: LogoProps) {
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       className={className}
+      role="img"
+      aria-label="Fincheck"
     >
+      <title>Fincheck</title>
       <path
         stroke="currentColor"
         fillRule="evenodd"
