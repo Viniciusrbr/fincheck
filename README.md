@@ -5,6 +5,10 @@
   <p>Gerencie suas finanças de forma eficiente, acompanhando despesas, receitas e saldos de suas contas bancárias.</p>
 </div>
 
+<img width="2160" height="1536" alt="image" src="https://github.com/user-attachments/assets/f6f2127b-a087-41b2-9a60-5b7448a8a863" />
+<img width="2160" height="1536" alt="image" src="https://github.com/user-attachments/assets/e7b0c233-d323-4927-b12e-3bcd81f44c29" />
+
+
 ---
 
 ## 📋 Sobre o Projeto
